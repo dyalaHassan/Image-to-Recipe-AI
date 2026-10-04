@@ -1,0 +1,381 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-image: url("/static/walleper.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: #4a2348;
+}
+
+.container {
+    width: 90%;
+    max-width: 950px;
+
+    margin: auto;
+    padding: 60px 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-size: 42px;
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    color: white;
+
+    text-shadow:
+        2px 2px 0 #d86ab4,
+        4px 4px 0 #a95b9e,
+        0 0 18px rgba(255, 255, 255, 0.8);
+}
+
+.subtitle {
+    margin-top: 12px;
+
+    font-size: 15px;
+    letter-spacing: 1px;
+
+    color: #6d385e;
+}
+
+.window,
+.result-window {
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 2px solid white;
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 30px rgba(132, 72, 120, 0.25),
+        0 0 0 2px rgba(255, 255, 255, 0.35);
+
+    overflow: hidden;
+
+    margin-bottom: 40px;
+}
+
+.window-bar {
+    padding: 12px 18px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a98ad6,
+            #d99ac3,
+            #89c8d8
+        );
+
+    border-bottom: 2px solid white;
+}
+
+.window-content {
+    padding: 45px;
+
+    text-align: center;
+}
+
+.window-content h1 {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.window-content p {
+    margin-bottom: 30px;
+
+    color: #765168;
+}
+
+.upload-box {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 180px;
+
+    border: 3px dashed #b79ac8;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    color: #5b4455;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.upload-box:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(100, 78, 96, 0.16);
+}
+
+.upload-box input {
+    display: none;
+}
+
+button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 17px;
+
+    border: 2px solid white;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8b78bd,
+            #c687ac,
+            #6faebe
+        );
+
+    box-shadow:
+        0 6px 0 #6e5d8d,
+        0 0 20px rgba(160, 119, 163, 0.25);
+
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #6e5d8d;
+}
+
+.result-content {
+    padding: 30px;
+}
+
+.tree-title {
+    margin-bottom: 16px;
+
+    color: #5a4054;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.tree-wrapper {
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 16px;
+
+    padding: 24px;
+
+    margin-bottom: 28px;
+
+    overflow-x: auto;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 25px rgba(82, 54, 78, 0.12);
+}
+
+.tree,
+.tree ul {
+    list-style: none;
+
+    margin: 0;
+
+    padding-left: 28px;
+
+    position: relative;
+}
+
+.tree ul {
+    margin-top: 12px;
+}
+
+.tree li {
+    position: relative;
+
+    padding-left: 22px;
+
+    margin: 14px 0;
+}
+
+.tree li::before {
+    content: "";
+
+    position: absolute;
+
+    top: -10px;
+    left: 0;
+
+    width: 1px;
+    height: calc(100% + 24px);
+
+    background: rgba(117, 92, 109, 0.45);
+}
+
+.tree li::after {
+    content: "";
+
+    position: absolute;
+
+    top: 16px;
+    left: 0;
+
+    width: 18px;
+    height: 1px;
+
+    background: rgba(117, 92, 109, 0.45);
+}
+
+.tree li:last-child::before {
+    height: 26px;
+}
+
+.tree-node {
+    display: inline-block;
+
+    max-width: 100%;
+
+    padding: 10px 14px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border: 1px solid rgba(120, 100, 115, 0.18);
+
+    border-radius: 12px;
+
+    color: #4c3a47;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0 4px 12px rgba(70, 50, 65, 0.08);
+}
+
+.main-node {
+    background: rgba(255, 244, 249, 0.96);
+
+    border: 1px solid rgba(200, 150, 180, 0.3);
+
+    font-weight: 700;
+
+    color: #5e4454;
+}
+
+.recipe-name {
+    background: rgba(243, 245, 248, 0.96);
+
+    border: 1px solid rgba(110, 100, 120, 0.18);
+
+    font-weight: 700;
+
+    color: #413941;
+}
+
+.label-node {
+    background: rgba(250, 247, 250, 0.96);
+
+    border: 1px solid rgba(140, 120, 135, 0.16);
+
+    font-weight: 700;
+
+    color: #5d4b57;
+}
+
+.text-node {
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #554750;
+}
+
+footer {
+    text-align: center;
+
+    margin-top: 50px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #74415f;
+}
+
+@media (max-width: 600px) {
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .window-content {
+        padding: 25px;
+    }
+
+    .window-content h1 {
+        font-size: 23px;
+    }
+
+    .tree-node {
+        font-size: 13px;
+    }
+
+    .tree-title {
+        font-size: 20px;
+    }
+}
