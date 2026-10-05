@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Chef</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <div class="logo">CYBER CHEF</div>
+            <p class="subtitle">Upload your ingredients and let AI suggest recipes</p>
+        </header>
+
+        <section class="window">
+            <div class="window-bar">
+                <span>recipe_generator.exe</span>
+            </div>
+
+            <div class="window-content">
+                <h1>What's in your kitchen?</h1>
+                <p>Upload a photo of your ingredients.</p>
+
+                <form method="POST" enctype="multipart/form-data">
+                    <label class="upload-box">
+                        <span>SELECT IMAGE</span>
+                        <input type="file" name="image" accept="image/*" required>
+                    </label>
+
+                    <button type="submit">GENERATE RECIPES</button>
+                </form>
+            </div>
+        </section>
+
+        {% if result %}
+        <section class="result-window">
+            <div class="window-bar">
+                <span>recipe_tree_view</span>
+            </div>
+
+            <div class="result-content">
+                <h2 class="tree-title">Ingredient </h2>
+
+                <div class="tree-wrapper">
+                    <ul class="tree">
+                        <li>
+                            <span class="tree-node main-node">Detected Ingredients</span>
+                            <ul>
+                                {% for ingredient in result.ingredients %}
+                                <li>
+                                    <span class="tree-node">{{ ingredient }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 class="tree-title">Recipe </h2>
+
+                <div class="tree-wrapper">
+                    <ul class="tree">
+                        <li>
+                            <span class="tree-node main-node">Suggested Recipes</span>
+                            <ul>
+                                {% for recipe in result.recipes %}
+                                <li>
+                                    <span class="tree-node recipe-name">{{ recipe.name }}</span>
+                                    <ul>
+                                        <li>
+                                            <span class="tree-node label-node">Description</span>
+                                            <ul>
+                                                <li>
+                                                    <span class="tree-node text-node">{{ recipe.description }}</span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="tree-node label-node">Prep Time</span>
+                                            <ul>
+                                                <li>
+                                                    <span class="tree-node text-node">{{ recipe.prep_time }}</span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <footer>
+            Powered by Gemini + Flask
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
